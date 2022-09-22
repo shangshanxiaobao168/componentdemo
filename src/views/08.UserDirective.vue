@@ -1,22 +1,29 @@
 <template>
   <div>
-    <!-- <input type="text" v-mydirective /> -->
-     <input type="text" v-focus />
+    <!-- 全局注册自定义指令 -->
+    <input type="text" v-mydirective />
+    <!-- 局部注册自定义指令 -->
+    <!-- <input type="text" v-focus /> -->
+    <!-- 自定义指令传值 -->
+    <p v-color="colorStr">用全局自定义指令修改文字颜色</p>
   </div>
 </template>
 
 <script>
-// 自定义指令的使用
+// 局部注册自定义指令的使用
 export default {
   data() {
-    return {};
+    return {
+      colorStr: 'red',
+    };
   },
-  directives:{
-    focus:{
-        inserted(el){
-            el.focus()
-        }
-    }
+  directives: {
+    focus: {
+      inserted(el) {
+        console.log(el); //input输入框
+        el.focus();
+      },
+    },
   },
   created() {},
 
